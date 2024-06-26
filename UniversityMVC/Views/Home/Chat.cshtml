@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Chat";
+}
+
+<h2>Chat with Bot</h2>
+
+<div id="botDiv"></div>
+
+<script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+<script>
+    const { ReactWebChat, createDirectLine } = window.WebChat;
+
+    const directLine = createDirectLine({
+        token: '<YOUR_DIRECT_LINE_SECRET>'
+    });
+
+    window.ReactDOM.render(
+        React.createElement(ReactWebChat, {
+            directLine: directLine,
+            userID: 'YOUR_USER_ID',
+            username: 'YOUR_USERNAME'
+        }),
+        document.getElementById('botDiv')
+    );
+</script>

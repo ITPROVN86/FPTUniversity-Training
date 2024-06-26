@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UniversityBusiness.Specialization>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-danger">Create New</a>
+</p>
+@using (Html.BeginForm("Index", "Specialization", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col">
+                @Html.TextBox("SearchString", TempData["searchString"], null, new { @class = "form-control", @placeholder = "Enter keywords to search for" })
+            </div>
+            <div class="col">
+                <input type="submit" class="btn btn-danger" value="Tìm kiếm" />
+            </div>
+
+        </div>
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecializationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecializationName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecializationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecializationName)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.SpecializationId }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Details", "Details", new { id = item.SpecializationId }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SpecializationId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

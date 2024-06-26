@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ProductRatingPrediction>
+
+<h2>Recommended Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recommendation in Model)
+        {
+            <tr>
+                <td>@recommendation.productId</td>
+                <td>@recommendation.Score</td>
+            </tr>
+        }
+    </tbody>
+</table>
